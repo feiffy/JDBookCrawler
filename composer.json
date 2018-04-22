@@ -1,0 +1,22 @@
+{
+    "name": "feiffy/my-php-crawler",
+    "authors": [
+        {
+            "name": "feiffy",
+            "email": "feifeifanye@hotmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "fabpot/goutte": "^3.2",
+        "symfony/process": "^4.0",
+        "facebook/webdriver": "^1.5",
+        "doctrine/orm": "^2.6"
+    },
+    "require-dev": {
+        "shark/simple_html_dom": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {"Feiffy\\PHPCrawler\\": "src/"}
+    }
+}
