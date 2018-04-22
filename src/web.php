@@ -6,18 +6,23 @@ $page_limit   = $_REQUEST['page_limit'] ?: 100;
 $offset       = ($page_id - 1) * $page_limit;
 $search       = [];
 $queryBuilder = $bookRepo->createQueryBuilder('b');
+$queryBuilderCount = $bookRepo->createQueryBuilder('b');
 if ($_REQUEST['title']) {
     $queryBuilder->where('b.title LIKE :title')->setParameter('title', $_REQUEST['title'] . '%');
+    $queryBuilderCount->where('b.title LIKE :title')->setParameter('title', $_REQUEST['title'] . '%');
 }
 if ($_REQUEST['author']) {
     $queryBuilder->andWhere('b.author LIKE :author')->setParameter('author', $_REQUEST['author'] . '%');
+    $queryBuilderCount->andWhere('b.author LIKE :author')->setParameter('author', $_REQUEST['author'] . '%');
 }
 if ($_REQUEST['publisher']) {
     $queryBuilder->andWhere('b.publisher LIKE :publisher')->setParameter('publisher', $_REQUEST['publisher'] . '%');
+    $queryBuilderCount->andWhere('b.publisher LIKE :publisher')->setParameter('publisher', $_REQUEST['publisher'] . '%');
 }
+$count = $queryBuilderCount->select('count(1)')->getQuery()->getSingleScalarResult();
+
 $books = $queryBuilder->setMaxResults($page_limit)->setFirstResult($offset)->getQuery()->getResult();
 
-$count = $queryBuilder->select('count(1)')->getQuery()->getSingleScalarResult();
 $pages = intval($count / $page_limit);
 ?>
 <!doctype html>

@@ -9,7 +9,7 @@ require_once "bootstrap.php";
 /**
  *书籍 [12223001, 12353958] 12353958 此区间的书籍已经抓取完毕
  */
-for ($index = 12223001, $count = 1; $index <= 12226000; $index++) {
+for ($index = 12220001, $count = 1; $index <= 12226000; $index++) {
     $itemURL    = 'https://item.jd.com/' . $index . '.html';
     $isbnCached = [];
     $httpClient = new Client();
