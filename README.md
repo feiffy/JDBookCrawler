@@ -8,7 +8,7 @@
 ``` sh
 cd JDBookCrawler
 vendor/bin/doctrine orm:schema-tool:ceate
-``
+```
 
 # 执行抓取
 设置 save.php 中for循环的起始id和结束id
