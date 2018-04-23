@@ -7,12 +7,6 @@ require_once 'index.php';
 $isDevMode = true;
 $config    = Setup::createAnnotationMetadataConfiguration(array(APP_PATH . 'src/Entity/'), $isDevMode);
 
-$conn = array(
-    'dbname'   => 'jd_book',
-    'user'     => 'root',
-    'password' => 'root',
-    'host'     => 'localhost',
-    'driver'   => 'pdo_mysql',
-);
+$conn = 'configs/db.php';
 
 $entityManager = EntityManager::create($conn, $config);

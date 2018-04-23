@@ -7,9 +7,9 @@ use GuzzleHttp\Client;
 require_once "bootstrap.php";
 
 /**
- *书籍 [12223001, 12353958] 12353958 此区间的书籍已经抓取完毕
+ *书籍 [12195001,, 12353958] 此区间的书籍已经抓取完毕
  */
-for ($index = 12220001, $count = 1; $index <= 12226000; $index++) {
+for ($index = 12195001, $count = 1; $index <= 12226000; $index++) {
     $itemURL    = 'https://item.jd.com/' . $index . '.html';
     $isbnCached = [];
     $httpClient = new Client();
@@ -121,13 +121,7 @@ for ($index = 12220001, $count = 1; $index <= 12226000; $index++) {
     } catch (Exception $e) {
         echo $e->getMessage() . "\n";
         unset($entityManager);
-        $conn2          = array(
-            'dbname'   => 'jd_book',
-            'user'     => 'root',
-            'password' => 'root',
-            'host'     => 'localhost',
-            'driver'   => 'pdo_mysql',
-        );
+        $conn2 = require 'configs/db.php';
         $entityManager = EntityManager::create($conn2, $config);
         echo "The EntityManager is restarted\n";
         continue;
